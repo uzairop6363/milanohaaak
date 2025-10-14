@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Game Login</title>
+    <title>M999 Game Login</title>
     
     <style>
         /* CSS Code Yahan Hai */
@@ -12,12 +12,11 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Scrollbars ko hamesha ke liye hide kar dein */
+            overflow: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000; /* Agar image load na ho to black background */
+            background-color: #000;
         }
         
-        /* Yeh wrapper poore content ko sambhalega */
         .content-wrapper {
             width: 100%;
             height: 100%;
@@ -26,26 +25,41 @@
             position: relative;
         }
 
-        .login-container {
+        /* Yeh container form aur game title ko alag alag sides par rakhega */
+        .main-layout {
             display: flex;
-            justify-content: center;
+            justify-content: space-between; /* Important: Elements ko dono kinaroon par bhej dega */
             align-items: center;
             height: 100%;
             width: 100%;
-            color: white;
-            padding: 0 20px;
+            padding: 0 5%; /* Screen ke side se thora gap */
             box-sizing: border-box;
         }
 
         .login-form {
             background-color: rgba(20, 20, 40, 0.65);
-            padding: clamp(15px, 3vw, 25px) clamp(20px, 4vw, 40px); /* Responsive padding */
+            padding: 25px 35px;
             border-radius: 15px;
             width: 100%;
-            max-width: 420px;
+            max-width: 380px; /* Form ka size set kiya hai */
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(5px);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        /* Game Title "M999" ki styling */
+        .game-title {
+            font-size: clamp(60px, 10vw, 120px); /* Responsive font size */
+            font-weight: 900; /* Extra bold */
+            font-family: 'Arial Black', Gadget, sans-serif;
+            color: #fff;
+            text-align: center;
+            background: linear-gradient(180deg, #ffffff, #c7c7c7, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 
+                0px 0px 5px rgba(255,255,255,0.5),
+                0px 2px 8px rgba(0,0,0,0.8);
         }
 
         .input-group {
@@ -67,7 +81,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: clamp(12px, 1.5vw, 14px); /* Responsive font size */
+            font-size: 14px;
             margin-bottom: 25px;
         }
 
@@ -145,20 +159,14 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* === YEH SAB SE ZAROORI HISSA HAI === */
-        /* Jab screen seedhi (portrait) ho, to yeh CSS apply hoga */
+        /* === YEH SAB SE ZAROORI HISSA HAI (FORCE LANDSCAPE) === */
         @media (orientation: portrait) {
             .content-wrapper {
-                /* Screen ki height ko width bana do */
                 width: 100vh;
-                /* Screen ki width ko height bana do */
                 height: 100vw;
-                
                 position: absolute;
                 top: 0;
                 left: 0;
-                
-                /* Isko 90 degree ghuma do aur aisi position do ke screen par fit ho jaye */
                 transform-origin: top left;
                 transform: rotate(90deg) translateY(-100%);
             }
@@ -166,9 +174,9 @@
     </style>
 </head>
 <body>
-
     <div class="content-wrapper">
-        <div class="login-container">
+        <div class="main-layout">
+
             <form class="login-form">
                 <div class="input-group">
                     <input type="tel" id="mobile" value="3221287976" placeholder="Mobile Number">
@@ -191,14 +199,19 @@
                     <a href="#">Guest Login</a>
                 </div>
             </form>
-            <div class="version">Version 1.00</div>
+
+            <div class="game-title">
+                M999
+            </div>
+
         </div>
+        <div class="version">Version 1.00</div>
     </div>
 
     <script>
         function goFullScreen() {
             const elem = document.documentElement;
-            if (!document.fullscreenElement) { // Check karein ke pehle se full screen to nahi
+            if (!document.fullscreenElement) {
                 if (elem.requestFullscreen) {
                     elem.requestFullscreen();
                 } else if (elem.mozRequestFullScreen) { /* Firefox */
@@ -209,13 +222,9 @@
                     elem.msRequestFullscreen();
                 }
             }
-            // Pehli baar click ke baad is event listener ko hata dein
             document.removeEventListener('click', goFullScreen);
         }
-
-        // Jab user page par kahin bhi click karega, to full-screen ho jayega
         document.addEventListener('click', goFullScreen);
     </script>
-
 </body>
 </html>
