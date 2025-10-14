@@ -25,24 +25,25 @@
             position: relative;
         }
 
-        /* Form ko screen ke beech mein laane ke liye */
+        /* === FORM KI NAYI POSITION (RIGHT SIDE) === */
         .page-container {
             display: flex;
-            justify-content: center;  /* Center (Horizontally) */
-            align-items: center;      /* Center (Vertically) */
+            justify-content: flex-end;  /* <--- YEH FORM KO RIGHT SIDE PAR BHEJEGA */
+            align-items: center;      /* Vertically center mein rakhega */
             height: 100%;
             width: 100%;
+            padding-right: 8%; /* Right side se thora fasla */
             box-sizing: border-box;
         }
 
-        /* === FORM KA BEHTREEN AUR COMPACT DESIGN === */
+        /* === FORM KA NAYA CHHOTA SIZE === */
         .login-form {
-            background-color: rgba(30, 30, 50, 0.7); /* Thora dark transparent */
+            background-color: rgba(30, 30, 50, 0.7);
             padding: 25px 30px;
             border-radius: 15px;
-            width: 90%; /* Mobile screens par behtar lagega */
-            /* Form ki chaurai ko control karne ke liye max-width */
-            max-width: 380px; 
+            width: 90%;
+            /* Form ka size thora aur chhota kar diya hai */
+            max-width: 340px; /* <--- SIZE YAHAN SE CHHOTA KIYA GAYA HAI */
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(7px);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
@@ -88,7 +89,7 @@
 
         .buttons {
             display: flex;
-            flex-direction: column; /* Buttons upar neeche */
+            flex-direction: column;
             gap: 12px;
             margin-bottom: 20px;
         }
