@@ -38,8 +38,7 @@
 
         .login-form {
             background-color: rgba(30, 30, 50, 0.7);
-            /* Andar ki padding thori kam ki hai taake chhota content fit lage */
-            padding: 22px 28px; 
+            padding: 20px 25px; /* Padding kam ki */
             border-radius: 15px;
             width: 90%;
             max-width: 340px;
@@ -49,18 +48,18 @@
             margin-top: 10vh; 
         }
 
-        /* === YAHAN SE SAB CHEEZON KO CHHOTA KIYA GAYA HAI === */
+        /* === YAHAN SE SAB CHEEZON KO MAZEED CHHOTA KIYA GAYA HAI === */
 
         .input-group {
-            margin-bottom: 12px; /* Gap kam kiya */
+            margin-bottom: 10px; /* Gap kam kiya */
         }
 
         .input-group label {
             display: block;
             color: white;
-            margin-bottom: 6px; /* Gap kam kiya */
+            margin-bottom: 5px; /* Gap kam kiya */
             font-weight: bold;
-            font-size: 13px; /* Text chhota kiya */
+            font-size: 12px; /* Text chhota kiya */
         }
 
         .mobile-input-container, .password-container {
@@ -69,42 +68,42 @@
             background-color: rgba(255, 255, 255, 0.2);
             border-radius: 25px;
             border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 2px 10px; 
+            padding: 1px 10px; /* Padding kam ki */
             position: relative;
         }
 
         .country-code {
             display: flex;
             align-items: center;
-            padding-right: 10px;
+            padding-right: 8px;
             color: #eee;
             font-weight: bold;
-            font-size: 14px; /* Text chhota kiya */
+            font-size: 13px; /* Text chhota kiya */
         }
 
         .arrow-down {
             width: 0; 
             height: 0; 
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 5px solid #ccc;
-            margin-left: 5px;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #ccc;
+            margin-left: 4px;
         }
 
         .divider {
             width: 1px;
-            height: 18px; 
+            height: 16px; 
             background-color: #f06292;
             opacity: 0.7;
         }
         
         .input-group input {
             width: 100%;
-            padding: 7px 10px; 
+            padding: 6px 8px; 
             border: none;
             background: transparent;
             color: #fff;
-            font-size: 14px; 
+            font-size: 13px; /* Text chhota kiya */
             outline: none;
         }
         
@@ -114,46 +113,44 @@
 
         .eye-icon {
             cursor: pointer;
-            width: 20px;
-            height: 20px;
+            width: 18px; /* Icon chhota kiya */
+            height: 18px;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23bbb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'%3E%3C/path%3E%3Ccircle cx='12' cy='12' r='3'%3E%3C/circle%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0.8;
+            background-size: contain;
         }
 
         .options {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 13px; /* Text chhota kiya */
-            margin-bottom: 15px; /* Gap kam kiya */
+            font-size: 12px; /* Text chhota kiya */
+            margin-bottom: 15px;
             color: #f0f0f0;
         }
 
         .save-password { display: flex; align-items: center; }
         .save-password input { 
-            margin-right: 6px; /* Gap kam kiya */
-            width: 14px; /* Checkbox chhota kiya */
-            height: 14px;
+            margin-right: 5px;
+            width: 13px; /* Checkbox chhota kiya */
+            height: 13px;
         }
         .forgot-password { color: #00c6ff; text-decoration: none; }
 
         .buttons { display: flex; flex-direction: row; gap: 10px; margin-bottom: 0; }
         
         .btn {
-            padding: 10px 0; /* Button ki height kam ki */
+            padding: 8px 0; /* Button ki height kam ki */
             border: none;
-            border-radius: 7px; /* Thora kam gol */
-            font-size: 15px; /* Text chhota kiya */
+            border-radius: 7px;
+            font-size: 14px; /* Text chhota kiya */
             font-weight: bold;
             cursor: pointer;
             flex: 1;
             text-transform: uppercase;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
             transition: transform 0.2s;
         }
-        .btn:active { transform: translateY(2px); }
+        .btn:active { transform: translateY(1px); }
         .btn-login {
             background: linear-gradient(180deg, #ffde59, #ffac38);
             color: #fff;
