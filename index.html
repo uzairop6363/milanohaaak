@@ -25,46 +25,41 @@
             position: relative;
         }
 
-        /* === FORM KI NAYI POSITION === */
+        /* Form ko screen ke beech mein laane ke liye */
         .page-container {
             display: flex;
-            /* Horizontally: Left side par bhejo */
-            justify-content: flex-start;
-            /* Vertically: Top par bhejo */
-            align-items: flex-start;
+            justify-content: center;  /* Center (Horizontally) */
+            align-items: center;      /* Center (Vertically) */
             height: 100%;
             width: 100%;
-            /* Corner se thora gap dene ke liye padding */
-            padding: 5vh; /* 5% of screen height */
             box-sizing: border-box;
         }
 
-        /* === FORM KA NAYA SIZE AUR INTERNAL LAYOUT === */
+        /* === FORM KA BEHTREEN AUR COMPACT DESIGN === */
         .login-form {
-            background-color: rgba(20, 20, 40, 0.75);
-            padding: 3vh 3vw; /* Responsive padding */
-            border-radius: 20px;
-            /* Aapki requirement ke mutabiq width aur height */
-            width: 75%; 
-            height: 60%;
+            background-color: rgba(30, 30, 50, 0.7); /* Thora dark transparent */
+            padding: 25px 30px;
+            border-radius: 15px;
+            width: 90%; /* Mobile screens par behtar lagega */
+            /* Form ki chaurai ko control karne ke liye max-width */
+            max-width: 380px; 
             border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-            
-            /* Andar ke content ko manage karne ke liye Flexbox */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around; /* Options ke darmiyan barabar fasla */
+            backdrop-filter: blur(7px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
         }
 
         .input-group input {
             width: 100%;
-            padding: clamp(12px, 2vh, 18px); /* Responsive padding */
-            border-radius: 10px;
+            padding: 12px;
+            border-radius: 8px;
             border: 1px solid #777;
             background-color: rgba(255, 255, 255, 0.9);
             color: #333;
-            font-size: clamp(16px, 2.5vw, 22px); /* Responsive font size */
+            font-size: 16px;
             box-sizing: border-box;
         }
 
@@ -72,7 +67,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: clamp(14px, 2vw, 18px); /* Responsive font size */
+            font-size: 14px;
+            margin-bottom: 25px;
             color: #f0f0f0;
         }
 
@@ -82,9 +78,7 @@
         }
 
         .save-password input {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
+            margin-right: 8px;
         }
 
         .forgot-password {
@@ -94,15 +88,16 @@
 
         .buttons {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            flex-direction: column; /* Buttons upar neeche */
+            gap: 12px;
+            margin-bottom: 20px;
         }
 
         .btn {
-            padding: clamp(15px, 2.5vh, 20px) 0; /* Responsive padding */
+            padding: 14px 0;
             border: none;
-            border-radius: 12px;
-            font-size: clamp(18px, 3vw, 24px); /* Responsive font size */
+            border-radius: 8px;
+            font-size: 18px;
             font-weight: bold;
             cursor: pointer;
             width: 100%;
@@ -135,12 +130,12 @@
             color: white;
             text-decoration: none;
             background-color: rgba(0, 0, 0, 0.4);
-            padding: clamp(10px, 1.8vh, 15px) clamp(25px, 4vw, 40px);
+            padding: 10px 25px;
             border-radius: 50px;
             display: inline-block;
             border: 1px solid #777;
             font-weight: bold;
-            font-size: clamp(14px, 2.2vw, 20px);
+            font-size: 14px;
         }
 
         .version {
