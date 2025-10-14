@@ -25,28 +25,30 @@
             position: relative;
         }
 
-        /* === FORM KI NAYI POSITION (RIGHT SIDE) === */
+        /* === YAHAN TABDEELI KI GAYI HAI === */
         .page-container {
             display: flex;
-            justify-content: flex-end;  /* <--- YEH FORM KO RIGHT SIDE PAR BHEJEGA */
-            align-items: center;      /* Vertically center mein rakhega */
+            justify-content: flex-end;  /* Form ko Right Side par bheje ga */
+            align-items: flex-start;    /* Form ko Top par align karega */
             height: 100%;
             width: 100%;
-            padding-right: 8%; /* Right side se thora fasla */
+            padding-right: 8%;
             box-sizing: border-box;
         }
 
-        /* === FORM KA NAYA CHHOTA SIZE === */
+        /* === YAHAN BHI TABDEELI KI GAYI HAI === */
         .login-form {
             background-color: rgba(30, 30, 50, 0.7);
             padding: 25px 30px;
             border-radius: 15px;
             width: 90%;
-            /* Form ka size thora aur chhota kar diya hai */
-            max-width: 340px; /* <--- SIZE YAHAN SE CHHOTA KIYA GAYA HAI */
+            max-width: 340px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(7px);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            
+            /* Yeh line oopar se zaroori gap paida karegi */
+            margin-top: 15vh; /* 15% of the screen height */
         }
 
         .input-group {
