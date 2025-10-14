@@ -28,15 +28,19 @@
         /* === YAHAN TABDEELI KI GAYI HAI === */
         .page-container {
             display: flex;
-            justify-content: flex-end;  /* Form ko Right Side par bheje ga */
-            align-items: flex-start;    /* Form ko Top par align karega */
+            justify-content: flex-end;  /* Form ko Right Side par rakhega */
+            align-items: center;      /* Form ko vertically center rakhega (lekin padding ke andar) */
             height: 100%;
             width: 100%;
-            padding-right: 8%;
-            box-sizing: border-box;
+            box-sizing: border-box; /* Padding ko size mein shamil karne ke liye */
+
+            /* Aapki marzi ka gap yahan set kiya gaya hai */
+            padding-top: 9vh;    /* Oopar se 9vh ka gap */
+            padding-bottom: 8vh; /* Neeche se 8vh ka gap */
+            padding-right: 8%;   /* Right side se fasla */
         }
 
-        /* === YAHAN BHI TABDEELI KI GAYI HAI === */
+        /* === YAHAN SE MARGIN-TOP HATA DIYA GAYA HAI === */
         .login-form {
             background-color: rgba(30, 30, 50, 0.7);
             padding: 25px 30px;
@@ -46,9 +50,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(7px);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-            
-            /* Yeh line oopar se zaroori gap paida karegi */
-            margin-top: 9vh; /* 15% of the screen height */
+            /* margin-top ab yahan zaroori nahi hai */
         }
 
         .input-group {
