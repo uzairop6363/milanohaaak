@@ -33,12 +33,13 @@
             width: 100%;
             padding-right: 8%;
             box-sizing: border-box;
-            padding-bottom: 8vh; /* Neeche wala gap yahan se control ho raha hai */
+            padding-bottom: 8vh;
         }
 
         .login-form {
             background-color: rgba(30, 30, 50, 0.7);
-            padding: 25px 30px;
+            /* Andar ki padding thori kam ki hai taake chhota content fit lage */
+            padding: 22px 28px; 
             border-radius: 15px;
             width: 90%;
             max-width: 340px;
@@ -48,26 +49,26 @@
             margin-top: 10vh; 
         }
 
+        /* === YAHAN SE SAB CHEEZON KO CHHOTA KIYA GAYA HAI === */
+
         .input-group {
-            margin-bottom: 15px;
+            margin-bottom: 12px; /* Gap kam kiya */
         }
 
         .input-group label {
             display: block;
             color: white;
-            margin-bottom: 8px;
+            margin-bottom: 6px; /* Gap kam kiya */
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px; /* Text chhota kiya */
         }
 
-        /* === YAHAN INPUT BOXES KO MAZEED CHHOTA KIYA GAYA HAI === */
         .mobile-input-container, .password-container {
             display: flex;
             align-items: center;
             background-color: rgba(255, 255, 255, 0.2);
             border-radius: 25px;
             border: 1px solid rgba(255, 255, 255, 0.4);
-            /* Padding kam kar di hai taake box aur patla ho jaye */
             padding: 2px 10px; 
             position: relative;
         }
@@ -78,6 +79,7 @@
             padding-right: 10px;
             color: #eee;
             font-weight: bold;
+            font-size: 14px; /* Text chhota kiya */
         }
 
         .arrow-down {
@@ -90,22 +92,18 @@
         }
 
         .divider {
-            /* Divider ki height bhi kam kar di hai */
             width: 1px;
             height: 18px; 
             background-color: #f06292;
             opacity: 0.7;
         }
         
-        /* === YAHAN TEXT AUR PADDING KO CHHOTA KIYA GAYA HAI === */
         .input-group input {
             width: 100%;
-            /* Andar ki padding kam ki hai */
             padding: 7px 10px; 
             border: none;
             background: transparent;
             color: #fff;
-            /* Font size 16px se 14px kar diya hai */
             font-size: 14px; 
             outline: none;
         }
@@ -128,21 +126,26 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 14px;
-            margin-bottom: 20px;
+            font-size: 13px; /* Text chhota kiya */
+            margin-bottom: 15px; /* Gap kam kiya */
             color: #f0f0f0;
         }
 
         .save-password { display: flex; align-items: center; }
-        .save-password input { margin-right: 8px; }
+        .save-password input { 
+            margin-right: 6px; /* Gap kam kiya */
+            width: 14px; /* Checkbox chhota kiya */
+            height: 14px;
+        }
         .forgot-password { color: #00c6ff; text-decoration: none; }
 
-        .buttons { display: flex; flex-direction: row; gap: 12px; margin-bottom: 0; }
+        .buttons { display: flex; flex-direction: row; gap: 10px; margin-bottom: 0; }
+        
         .btn {
-            padding: 12px 0;
+            padding: 10px 0; /* Button ki height kam ki */
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 7px; /* Thora kam gol */
+            font-size: 15px; /* Text chhota kiya */
             font-weight: bold;
             cursor: pointer;
             flex: 1;
