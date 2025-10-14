@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF8">
+    <meta name="viewport" content="width=devicewidth, initialscale=1.0, maximumscale=1.0, userscalable=no">
     <title>Game Login</title>
     
     <style>
@@ -13,123 +13,157 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000;
+            fontfamily: 'Segoe UI', Tahoma, Geneva, Verdana, sansserif;
+            backgroundcolor: #000;
         }
         
         .content-wrapper {
             width: 100%;
             height: 100%;
             background: url('background.png') no-repeat center center;
-            background-size: cover;
+            backgroundsize: cover;
             position: relative;
         }
 
         .page-container {
             display: flex;
-            justify-content: flex-end;
-            align-items: flex-start;
+            justifycontent: flexend;
+            alignitems: flexstart;
             height: 100%;
             width: 100%;
-            padding-right: 8%;
-            box-sizing: border-box;
+            paddingright: 8%;
+            boxsizing: borderbox;
         }
 
+        /* === FORM KA SIZE/POSITION BILKUL NAHI CHHERA GAYA === */
         .login-form {
-            background-color: rgba(30, 30, 50, 0.7);
+            backgroundcolor: rgba(30, 30, 50, 0.7);
             padding: 25px 30px;
-            border-radius: 15px;
+            borderradius: 15px;
             width: 90%;
-            max-width: 340px;
+            maxwidth: 340px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(7px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-            margin-top: 10vh; 
+            backdropfilter: blur(7px);
+            boxshadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            margintop: 10vh; 
         }
 
+        /* === FORM KE ANDAR KA DESIGN AB YAHAN SE CHANGE HOGA === */
         .input-group {
-            margin-bottom: 15px;
+            marginbottom: 20px;
         }
 
+        .input-group label {
+            display: block;
+            color: white;
+            marginbottom: 8px;
+            fontweight: bold;
+            fontsize: 14px;
+        }
+
+        /* Mobile number ke liye naya container */
+        .mobile-input-container, .password-container {
+            display: flex;
+            alignitems: center;
+            backgroundcolor: rgba(255, 255, 255, 0.9);
+            borderradius: 8px;
+            border: 1px solid #777;
+            padding: 0 10px;
+            position: relative; /* Eye icon ke liye */
+        }
+
+        .country-code {
+            display: flex;
+            alignitems: center;
+            paddingright: 10px;
+            color: #333;
+            fontweight: bold;
+        }
+
+        .arrow-down {
+            width: 0; 
+            height: 0; 
+            borderleft: 5px solid transparent;
+            borderright: 5px solid transparent;
+            bordertop: 5px solid #555; /* Arrow ka color */
+            marginleft: 5px;
+        }
+
+        .divider {
+            width: 1px;
+            height: 25px;
+            backgroundcolor: #f06292; /* Pinkish line */
+        }
+        
+        /* Input fields ka default background aur border hata diya gaya hai */
         .input-group input {
             width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #777;
-            background-color: rgba(255, 255, 255, 0.9);
+            padding: 12px 10px;
+            border: none;
+            background: transparent;
             color: #333;
-            font-size: 16px;
-            box-sizing: border-box;
+            fontsize: 16px;
+            outline: none; /* Click par blue outline na aaye */
+        }
+        
+        .input-group input::placeholder {
+            color: #999;
+        }
+
+        .eye-icon {
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            /* Eye Icon (SVG) - Is se alag se image file nahi chahiye hogi */
+            backgroundimage: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'%3E%3C/path%3E%3Ccircle cx='12' cy='12' r='3'%3E%3C/circle%3E%3C/svg%3E");
+            backgroundrepeat: no-repeat;
+            backgroundposition: center;
         }
 
         .options {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-            margin-bottom: 25px;
+            justifycontent: spacebetween;
+            alignitems: center;
+            fontsize: 14px;
+            marginbottom: 25px;
             color: #f0f0f0;
         }
 
-        .save-password {
-            display: flex;
-            align-items: center;
-        }
+        .save-password { display: flex; alignitems: center; }
+        .save-password input { marginright: 8px; }
+        .forgot-password { color: #00c6ff; textdecoration: none; }
 
-        .save-password input {
-            margin-right: 8px;
-        }
-
-        .forgot-password {
-            color: #00c6ff;
-            text-decoration: none;
-        }
-
-        .buttons {
-            display: flex;
-            flex-direction: row;
-            gap: 12px;
-            /* Guest login hatne ke baad neeche se thora zyada gap de dete hain */
-            margin-bottom: 10px; 
-        }
-
-        /* === YAHAN BUTTONS KA SIZE CHHOTA KIYA GAYA HAI === */
+        /* Buttons ka layout side-by-side hi hai */
+        .buttons { display: flex; flexdirection: row; gap: 12px; marginbottom: 10px; }
         .btn {
-            padding: 12px 0; /* Padding 14px se 12px kar di hai */
+            padding: 12px 0;
             border: none;
-            border-radius: 8px;
-            font-size: 16px; /* Font size 18px se 16px kar diya hai */
-            font-weight: bold;
+            borderradius: 8px;
+            fontsize: 16px;
+            fontweight: bold;
             cursor: pointer;
             flex: 1;
-            text-transform: uppercase;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            texttransform: uppercase;
+            boxshadow: 0 4px 6px rgba(0,0,0,0.2);
             transition: transform 0.2s;
         }
-        
-        .btn:active {
-            transform: translateY(2px);
-        }
-
+        .btn:active { transform: translateY(2px); }
         .btn-login {
             background: linear-gradient(180deg, #ffde59, #ffac38);
             color: #fff;
             border: 1px solid #ffc400;
         }
-
         .btn-register {
             background: linear-gradient(180deg, #52d1ff, #20a9ff);
             color: #fff;
             border: 1px solid #009fff;
         }
-        
-        /* Guest Login ki styling yahan se hata di gayi hai */
 
         .version {
             position: absolute;
             bottom: 10px;
             left: 10px;
-            font-size: 12px;
+            fontsize: 12px;
             color: rgba(255, 255, 255, 0.7);
         }
 
@@ -140,7 +174,7 @@
                 position: absolute;
                 top: 0;
                 left: 0;
-                transform-origin: top left;
+                transformorigin: top left;
                 transform: rotate(90deg) translateY(-100%);
             }
         }
@@ -150,24 +184,40 @@
     <div class="content-wrapper">
         <div class="page-container">
             <form class="login-form">
+
                 <div class="input-group">
-                    <input type="tel" id="mobile" placeholder="Mobile Number">
+                    <label for="mobile">Mobile</label>
+                    <div class="mobile-input-container">
+                        <div class="country-code">
+                            <span>092</span>
+                            <span class="arrow-down"></span>
+                        </div>
+                        <div class="divider"></div>
+                        <input type="tel" id="mobile" placeholder="Please enter your mobile number">
+                    </div>
                 </div>
+
                 <div class="input-group">
-                    <input type="password" id="password" placeholder="Password">
+                    <label for="password">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="password" placeholder="Please enter a password">
+                        <span class="eye-icon"></span>
+                    </div>
                 </div>
+
                 <div class="options">
                     <div class="save-password">
                         <input type="checkbox" id="save-password" checked>
                         <label for="save-password">Save Password</label>
                     </div>
-                    <a href="#" class="forgot-password">Forgot Password?</a>
+                    <a href="#" class="forgot-password">Forgot Password</a>
                 </div>
                 <div class="buttons">
                     <button type="button" class="btn btn-login">Login</button>
                     <button type="button" class="btn btn-register">Register</button>
                 </div>
-                </form>
+                
+            </form>
         </div>
         <div class="version">Version 1.00</div>
     </div>
