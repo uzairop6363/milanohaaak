@@ -6,7 +6,7 @@
     <title>Game Login</title>
     
     <style>
-        /* CSS Code Yahan Hai */
+        /* CSS Code Yahan Hai (Koi Tabdeeli Nahi) */
         body, html {
             margin: 0;
             padding: 0;
@@ -25,14 +25,12 @@
             position: relative;
         }
 
-        /* === YAHAN SIRF RIGHT KA GAP KAM KIYA GAYA HAI === */
         .page-container {
             display: flex;
             justify-content: flex-end;
             align-items: flex-start;
             height: 100%;
             width: 100%;
-            /* Right ka gap 8% se kam karke 6% kar diya hai */
             padding-right: 6%; 
             box-sizing: border-box;
             padding-bottom: 4vh; 
@@ -179,6 +177,8 @@
     </style>
 </head>
 <body>
+    
+    <audio id="background-music" src="music.mp3" loop></audio>
     <div class="content-wrapper">
         <div class="page-container">
             <form class="login-form">
@@ -229,6 +229,16 @@
                 else if (elem.webkitRequestFullscreen) { elem.webkitRequestFullscreen(); } 
                 else if (elem.msRequestFullscreen) { elem.msRequestFullscreen(); }
             }
+
+            // --- YEH CODE ADD KIYA GAYA HAI (STEP 2) ---
+            // Is se music play hoga
+            var music = document.getElementById('background-music');
+            music.play().catch(error => {
+                // Agar koi error aaye (browser rok de) to console mein dikhaye
+                console.log("Audio play error:", error);
+            });
+            // --- END MUSIC CODE ---
+            
             document.removeEventListener('click', goFullScreen);
         }
         document.addEventListener('click', goFullScreen);
