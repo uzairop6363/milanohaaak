@@ -28,19 +28,26 @@
         /* === YAHAN TABDEELI KI GAYI HAI === */
         .page-container {
             display: flex;
-            justify-content: flex-end;  /* Form ko Right Side par rakhega */
-            align-items: center;      /* Form ko vertically center rakhega (lekin padding ke andar) */
+            /* Yeh image aur form ko dono kinaroon par bhej dega */
+            justify-content: space-between; 
+            align-items: center;      /* Dono cheezon ko vertically center rakhega */
             height: 100%;
             width: 100%;
-            box-sizing: border-box; /* Padding ko size mein shamil karne ke liye */
-
-            /* Aapki marzi ka gap yahan set kiya gaya hai */
-            padding-top: 9vh;    /* Oopar se 9vh ka gap */
-            padding-bottom: 8vh; /* Neeche se 8vh ka gap */
-            padding-right: 8%;   /* Right side se fasla */
+            box-sizing: border-box;
+            
+            /* Dono sides se thora fasla */
+            padding: 0 5%; 
         }
 
-        /* === YAHAN SE MARGIN-TOP HATA DIYA GAYA HAI === */
+        /* === CASINO GIRL IMAGE KI NAYI STYLING === */
+        .casino-girl-image {
+            /* Image ki height screen ki height ka 85% se zyada na ho */
+            max-height: 85vh; 
+            width: auto; /* Aspect ratio kharab na ho */
+            /* Image ke gird halka sa shadow effect */
+            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5));
+        }
+
         .login-form {
             background-color: rgba(30, 30, 50, 0.7);
             padding: 25px 30px;
@@ -50,13 +57,9 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(7px);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-            /* margin-top ab yahan zaroori nahi hai */
         }
 
-        .input-group {
-            margin-bottom: 15px;
-        }
-
+        .input-group { margin-bottom: 15px; }
         .input-group input {
             width: 100%;
             padding: 12px;
@@ -67,7 +70,6 @@
             font-size: 16px;
             box-sizing: border-box;
         }
-
         .options {
             display: flex;
             justify-content: space-between;
@@ -76,28 +78,10 @@
             margin-bottom: 25px;
             color: #f0f0f0;
         }
-
-        .save-password {
-            display: flex;
-            align-items: center;
-        }
-
-        .save-password input {
-            margin-right: 8px;
-        }
-
-        .forgot-password {
-            color: #00c6ff;
-            text-decoration: none;
-        }
-
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
+        .save-password { display: flex; align-items: center; }
+        .save-password input { margin-right: 8px; }
+        .forgot-password { color: #00c6ff; text-decoration: none; }
+        .buttons { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
         .btn {
             padding: 14px 0;
             border: none;
@@ -110,27 +94,18 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             transition: transform 0.2s;
         }
-        
-        .btn:active {
-            transform: translateY(2px);
-        }
-
+        .btn:active { transform: translateY(2px); }
         .btn-login {
             background: linear-gradient(180deg, #ffde59, #ffac38);
             color: #fff;
             border: 1px solid #ffc400;
         }
-
         .btn-register {
             background: linear-gradient(180deg, #52d1ff, #20a9ff);
             color: #fff;
             border: 1px solid #009fff;
         }
-        
-        .guest-login {
-            text-align: center;
-        }
-
+        .guest-login { text-align: center; }
         .guest-login a {
             color: white;
             text-decoration: none;
@@ -142,7 +117,6 @@
             font-weight: bold;
             font-size: 14px;
         }
-
         .version {
             position: absolute;
             bottom: 10px;
@@ -168,6 +142,9 @@
 <body>
     <div class="content-wrapper">
         <div class="page-container">
+            
+            <img src="girl.png" alt="Casino Girl" class="casino-girl-image">
+            
             <form class="login-form">
                 <div class="input-group">
                     <input type="tel" id="mobile" placeholder="Mobile Number">
@@ -190,6 +167,7 @@
                     <a href="#">Guest Login</a>
                 </div>
             </form>
+
         </div>
         <div class="version">Version 1.00</div>
     </div>
