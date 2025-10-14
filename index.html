@@ -25,11 +25,10 @@
             position: relative;
         }
 
-        /* === YAHAN TABDEELI KI GAYI HAI === */
+        /* === YEH CONTAINER IMAGE AUR FORM DONO KO HOLD KAREGA === */
         .page-container {
             display: flex;
-            /* Yeh image aur form ko dono kinaroon par bhej dega */
-            justify-content: space-between; 
+            justify-content: space-between; /* Image aur Form ko alag alag kinaroon par bhej dega */
             align-items: center;      /* Dono cheezon ko vertically center rakhega */
             height: 100%;
             width: 100%;
@@ -39,21 +38,20 @@
             padding: 0 5%; 
         }
 
-        /* === CASINO GIRL IMAGE KI NAYI STYLING === */
+        /* === CASINO GIRL IMAGE KI STYLING === */
         .casino-girl-image {
-            /* Image ki height screen ki height ka 85% se zyada na ho */
-            max-height: 85vh; 
-            width: auto; /* Aspect ratio kharab na ho */
-            /* Image ke gird halka sa shadow effect */
-            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5));
+            max-height: 85vh; /* Image ki height screen ki height ka 85% se zyada na ho */
+            width: auto;      /* Aspect ratio kharab na ho */
+            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5)); /* Halki si shadow */
         }
 
+        /* === LOGIN FORM KI STYLING === */
         .login-form {
             background-color: rgba(30, 30, 50, 0.7);
             padding: 25px 30px;
             border-radius: 15px;
-            width: 90%;
-            max-width: 340px;
+            width: 90%; /* Responsive width */
+            max-width: 340px; /* Form ka size chhota aur compact rahega */
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(7px);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
