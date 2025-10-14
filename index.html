@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>M999 Game Login</title>
+    <title>Game Login</title>
     
     <style>
         /* CSS Code Yahan Hai */
@@ -25,41 +25,30 @@
             position: relative;
         }
 
-        /* Yeh container form aur game title ko alag alag sides par rakhega */
-        .main-layout {
+        /* Yeh container form ko corner mein position karega */
+        .page-container {
             display: flex;
-            justify-content: space-between; /* Important: Elements ko dono kinaroon par bhej dega */
-            align-items: center;
+            /* Horizontally: Right side par bhejo */
+            justify-content: flex-end;
+            /* Vertically: Bottom par bhejo */
+            align-items: flex-end;
             height: 100%;
             width: 100%;
-            padding: 0 5%; /* Screen ke side se thora gap */
+            /* Corner se thora gap dene ke liye padding */
+            padding: 40px;
             box-sizing: border-box;
         }
 
         .login-form {
-            background-color: rgba(20, 20, 40, 0.65);
-            padding: 25px 35px;
+            background-color: rgba(20, 20, 40, 0.7); /* Thora aur dark transparent */
+            padding: 25px;
             border-radius: 15px;
             width: 100%;
-            max-width: 380px; /* Form ka size set kiya hai */
+            /* Form ka size chhota kar diya hai */
+            max-width: 350px; 
             border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
-        /* Game Title "M999" ki styling */
-        .game-title {
-            font-size: clamp(60px, 10vw, 120px); /* Responsive font size */
-            font-weight: 900; /* Extra bold */
-            font-family: 'Arial Black', Gadget, sans-serif;
-            color: #fff;
-            text-align: center;
-            background: linear-gradient(180deg, #ffffff, #c7c7c7, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0px 0px 5px rgba(255,255,255,0.5),
-                0px 2px 8px rgba(0,0,0,0.8);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
         }
 
         .input-group {
@@ -102,13 +91,13 @@
 
         .buttons {
             display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            margin-bottom: 25px;
+            flex-direction: column; /* Buttons ko upar neeche kar diya hai */
+            gap: 12px; /* Buttons ke darmiyan gap */
+            margin-bottom: 20px;
         }
 
         .btn {
-            padding: 15px 0;
+            padding: 14px 0;
             border: none;
             border-radius: 8px;
             font-size: 18px;
@@ -144,11 +133,12 @@
             color: white;
             text-decoration: none;
             background-color: rgba(0, 0, 0, 0.4);
-            padding: 12px 30px;
+            padding: 10px 25px;
             border-radius: 50px;
             display: inline-block;
             border: 1px solid #777;
             font-weight: bold;
+            font-size: 14px; /* Thora chhota font */
         }
 
         .version {
@@ -175,7 +165,7 @@
 </head>
 <body>
     <div class="content-wrapper">
-        <div class="main-layout">
+        <div class="page-container">
 
             <form class="login-form">
                 <div class="input-group">
@@ -199,10 +189,6 @@
                     <a href="#">Guest Login</a>
                 </div>
             </form>
-
-            <div class="game-title">
-                M999
-            </div>
 
         </div>
         <div class="version">Version 1.00</div>
