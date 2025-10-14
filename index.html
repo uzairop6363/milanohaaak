@@ -44,9 +44,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(7px);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-            
-            /* === YAHAN TABDEELI KI GAYI HAI === */
-            /* Oopar wala gap 15vh se kam karke 10vh kar diya hai */
             margin-top: 10vh; 
         }
 
@@ -92,14 +89,16 @@
             display: flex;
             flex-direction: row;
             gap: 12px;
-            margin-bottom: 20px;
+            /* Guest login hatne ke baad neeche se thora zyada gap de dete hain */
+            margin-bottom: 10px; 
         }
 
+        /* === YAHAN BUTTONS KA SIZE CHHOTA KIYA GAYA HAI === */
         .btn {
-            padding: 14px 0;
+            padding: 12px 0; /* Padding 14px se 12px kar di hai */
             border: none;
             border-radius: 8px;
-            font-size: 18px;
+            font-size: 16px; /* Font size 18px se 16px kar diya hai */
             font-weight: bold;
             cursor: pointer;
             flex: 1;
@@ -124,21 +123,7 @@
             border: 1px solid #009fff;
         }
         
-        .guest-login {
-            text-align: center;
-        }
-
-        .guest-login a {
-            color: white;
-            text-decoration: none;
-            background-color: rgba(0, 0, 0, 0.4);
-            padding: 10px 25px;
-            border-radius: 50px;
-            display: inline-block;
-            border: 1px solid #777;
-            font-weight: bold;
-            font-size: 14px;
-        }
+        /* Guest Login ki styling yahan se hata di gayi hai */
 
         .version {
             position: absolute;
@@ -182,10 +167,7 @@
                     <button type="button" class="btn btn-login">Login</button>
                     <button type="button" class="btn btn-register">Register</button>
                 </div>
-                <div class="guest-login">
-                    <a href="#">Guest Login</a>
-                </div>
-            </form>
+                </form>
         </div>
         <div class="version">Version 1.00</div>
     </div>
