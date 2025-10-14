@@ -38,7 +38,7 @@
 
         .login-form {
             background-color: rgba(30, 30, 50, 0.7);
-            padding: 20px 25px; /* Padding kam ki */
+            padding: 20px 25px;
             border-radius: 15px;
             width: 85%;
             max-width: 300px;
@@ -48,27 +48,30 @@
             margin-top: 10vh; 
         }
 
-        /* === YAHAN SE SAB CHEEZON KO MAZEED CHHOTA KIYA GAYA HAI === */
-
         .input-group {
-            margin-bottom: 10px; /* Gap kam kiya */
+            margin-bottom: 10px;
         }
 
         .input-group label {
             display: block;
             color: white;
-            margin-bottom: 5px; /* Gap kam kiya */
+            margin-bottom: 5px;
             font-weight: bold;
-            font-size: 12px; /* Text chhota kiya */
+            font-size: 12px;
         }
 
+        /* === YAHAN SIRF RANGON KI TABDEELI KI GAYI HAI === */
         .mobile-input-container, .password-container {
             display: flex;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.2);
+            /* Naya gehra Burgundy/Maroon background color */
+            background-color: rgb(85, 45, 45); 
             border-radius: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 1px 10px; /* Padding kam ki */
+            /* Border ko thora dark kiya hai */
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            /* Andar ki taraf shadow effect ke liye */
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+            padding: 1px 10px;
             position: relative;
         }
 
@@ -76,9 +79,9 @@
             display: flex;
             align-items: center;
             padding-right: 8px;
-            color: #eee;
+            color: #f0f0f0; /* Off-white color */
             font-weight: bold;
-            font-size: 13px; /* Text chhota kiya */
+            font-size: 13px;
         }
 
         .arrow-down {
@@ -86,15 +89,14 @@
             height: 0; 
             border-left: 4px solid transparent;
             border-right: 4px solid transparent;
-            border-top: 4px solid #ccc;
+            /* Arrow ka naya Golden Yellow color */
+            border-top: 4px solid #f39c12; 
             margin-left: 4px;
         }
 
+        /* Pink Line ko hata diya gaya hai */
         .divider {
-            width: 1px;
-            height: 16px; 
-            background-color: #f06292;
-            opacity: 0.7;
+            display: none; 
         }
         
         .input-group input {
@@ -103,27 +105,31 @@
             border: none;
             background: transparent;
             color: #fff;
-            font-size: 13px; /* Text chhota kiya */
+            font-size: 13px;
             outline: none;
         }
         
+        /* Placeholder ka naya Greyish-Pink color */
         .input-group input::placeholder {
-            color: #ccc;
+            color: #c8b4c0; 
         }
 
         .eye-icon {
             cursor: pointer;
-            width: 18px; /* Icon chhota kiya */
+            width: 18px;
             height: 18px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23bbb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'%3E%3C/path%3E%3Ccircle cx='12' cy='12' r='3'%3E%3C/circle%3E%3C/svg%3E");
+            /* Eye Icon (SVG) - Naye Greyish-Pink color ke sath */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'%3E%3Cpath fill='%23c8b4c0' d='M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 157.1 0 224 0 224s48.6 66.9 95.4 111.4C142.5 379.2 207.2 416 288 416s145.5-36.8 192.6-80.6C527.4 290.9 576 224 576 224s-48.6-66.9-95.4-111.4C433.5 68.8 368.8 32 288 32zm0 320c-53 0-96-43-96-96s43-96 96-96 96 43 96 96-43 96-96 96zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32z'/%3E%3C/svg%3E");
             background-size: contain;
+            background-repeat: no-repeat;
         }
 
+        /* Baaki sab kuch bilkul waisa hi hai */
         .options {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 12px; /* Text chhota kiya */
+            font-size: 12px;
             margin-bottom: 15px;
             color: #f0f0f0;
         }
@@ -131,18 +137,16 @@
         .save-password { display: flex; align-items: center; }
         .save-password input { 
             margin-right: 5px;
-            width: 13px; /* Checkbox chhota kiya */
+            width: 13px;
             height: 13px;
         }
         .forgot-password { color: #00c6ff; text-decoration: none; }
-
         .buttons { display: flex; flex-direction: row; gap: 10px; margin-bottom: 0; }
-        
         .btn {
-            padding: 8px 0; /* Button ki height kam ki */
+            padding: 8px 0;
             border: none;
             border-radius: 7px;
-            font-size: 14px; /* Text chhota kiya */
+            font-size: 14px;
             font-weight: bold;
             cursor: pointer;
             flex: 1;
@@ -161,7 +165,6 @@
             color: #fff;
             border: 1px solid #009fff;
         }
-
         .version {
             position: absolute;
             bottom: 10px;
@@ -169,7 +172,6 @@
             font-size: 12px;
             color: rgba(255, 255, 255, 0.7);
         }
-
         @media (orientation: portrait) {
             .content-wrapper {
                 width: 100vh;
