@@ -6,7 +6,7 @@
     <title>Game Login</title>
     
     <style>
-        /* CSS Code Yahan Hai (Ab Bilkul Theek Hai) */
+        /* CSS Code Yahan Hai */
         body, html {
             margin: 0;
             padding: 0;
@@ -28,11 +28,14 @@
         .page-container {
             display: flex;
             justify-content: flex-end;
-            align-items: flex-start;
+            align-items: flex-start; /* Form ko top align rakha hai */
             height: 100%;
             width: 100%;
             padding-right: 8%;
             box-sizing: border-box;
+            
+            /* === NEECHE KA GAP WAPAS LAANE KE LIYE === */
+            padding-bottom: 8vh; /* Neeche se 8vh ka gap */
         }
 
         .login-form {
@@ -44,11 +47,25 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(7px);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            
+            /* Oopar wala gap jo pehle theek kiya tha */
             margin-top: 10vh; 
+            
+            /* === NEECHE KA GAP MAINTAIN KARNE KE LIYE === */
+            /* Jab height content ke mutabiq adjust ho to margin-bottom kaam karta hai */
+            margin-bottom: 0; /* Page-container ki padding-bottom ab theek kaam karegi */
+
+            /* Form ki height ko control karne ke liye */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Content ko equally distribute karega */
+            height: calc(100% - 18vh); /* Total height - top gap - bottom gap */
+            max-height: 500px; /* Ya koi munasib max height */
         }
 
+
         .input-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Input groups ke darmiyan thora kam fasla */
         }
 
         .input-group label {
@@ -59,13 +76,17 @@
             font-size: 14px;
         }
 
+        /* === INPUT BOXES KO PATLA, GOL AUR TRANSPARENT KARNE KE LIYE === */
         .mobile-input-container, .password-container {
             display: flex;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
-            border: 1px solid #777;
-            padding: 0 10px;
+            /* Background color ko transparent kiya gaya */
+            background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+            /* Borders ko mazeed gol kiya gaya */
+            border-radius: 25px; /* Pehle 8px tha, ab 25px */
+            border: 1px solid rgba(255, 255, 255, 0.4); /* Transparent border */
+            
+            padding: 5px 10px; /* Input boxes ko patla karne ke liye padding kam ki */
             position: relative;
         }
 
@@ -73,7 +94,7 @@
             display: flex;
             align-items: center;
             padding-right: 10px;
-            color: #333;
+            color: #eee; /* Colour thora light kiya hai */
             font-weight: bold;
         }
 
@@ -82,37 +103,39 @@
             height: 0; 
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
-            border-top: 5px solid #555;
+            border-top: 5px solid #ccc; /* Arrow ka color thora light kiya hai */
             margin-left: 5px;
         }
 
         .divider {
             width: 1px;
-            height: 25px;
+            height: 20px; /* Divider ki height kam ki hai, input box ke patle hone ki wajah se */
             background-color: #f06292;
+            opacity: 0.7; /* Divider ko thora transparent kiya */
         }
         
         .input-group input {
             width: 100%;
-            padding: 12px 10px;
+            padding: 8px 10px; /* Input text ke andar ki padding mazeed kam ki */
             border: none;
             background: transparent;
-            color: #333;
+            color: #fff; /* Input text ka color white kiya hai transparent background ki wajah se */
             font-size: 16px;
             outline: none;
         }
         
         .input-group input::placeholder {
-            color: #999;
+            color: #ccc; /* Placeholder ka color thora light kiya hai */
         }
 
         .eye-icon {
             cursor: pointer;
             width: 20px;
             height: 20px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'%3E%3C/path%3E%3Ccircle cx='12' cy='12' r='3'%3E%3C/circle%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23bbb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'%3E%3C/path%3E%3Ccircle cx='12' cy='12' r='3'%3E%3C/circle%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: center;
+            opacity: 0.8;
         }
 
         .options {
@@ -120,7 +143,7 @@
             justify-content: space-between;
             align-items: center;
             font-size: 14px;
-            margin-bottom: 25px;
+            margin-bottom: 20px; /* Thora kam fasla taake neeche gap ban sake */
             color: #f0f0f0;
         }
 
@@ -128,7 +151,7 @@
         .save-password input { margin-right: 8px; }
         .forgot-password { color: #00c6ff; text-decoration: none; }
 
-        .buttons { display: flex; flex-direction: row; gap: 12px; margin-bottom: 10px; }
+        .buttons { display: flex; flex-direction: row; gap: 12px; margin-bottom: 0; /* Buttons ke neeche ka margin hata diya hai */ }
         .btn {
             padding: 12px 0;
             border: none;
@@ -141,12 +164,17 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             transition: transform 0.2s;
         }
-        .btn:active { transform: translateY(2px); }
+        
+        .btn:active {
+            transform: translateY(2px);
+        }
+
         .btn-login {
             background: linear-gradient(180deg, #ffde59, #ffac38);
             color: #fff;
             border: 1px solid #ffc400;
         }
+
         .btn-register {
             background: linear-gradient(180deg, #52d1ff, #20a9ff);
             color: #fff;
