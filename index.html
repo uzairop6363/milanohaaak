@@ -10,8 +10,8 @@
         body, html {
             margin: 0;
             padding: 0;
-            width: 75%;
-            height: 60%;
+            width: 100%;
+            height: 100%;
             overflow: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #000;
@@ -25,44 +25,46 @@
             position: relative;
         }
 
-        /* Yeh container form ko corner mein position karega */
+        /* === FORM KI NAYI POSITION === */
         .page-container {
             display: flex;
-            /* Horizontally: Right side par bhejo */
-            justify-content: flex-end;
-            /* Vertically: Bottom par bhejo */
-            align-items: flex-end;
-            height: 60%;
-            width: 75%;
+            /* Horizontally: Left side par bhejo */
+            justify-content: flex-start;
+            /* Vertically: Top par bhejo */
+            align-items: flex-start;
+            height: 100%;
+            width: 100%;
             /* Corner se thora gap dene ke liye padding */
-            padding: 40px;
+            padding: 5vh; /* 5% of screen height */
             box-sizing: border-box;
         }
 
+        /* === FORM KA NAYA SIZE AUR INTERNAL LAYOUT === */
         .login-form {
-            background-color: rgba(20, 20, 40, 0.7); /* Thora aur dark transparent */
-            padding: 25px;
-            border-radius: 15px;
-            width: 75%;
-            /* Form ka size chhota kar diya hai */
-            max-width: 250px; 
+            background-color: rgba(20, 20, 40, 0.75);
+            padding: 3vh 3vw; /* Responsive padding */
+            border-radius: 20px;
+            /* Aapki requirement ke mutabiq width aur height */
+            width: 75%; 
+            height: 60%;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(6px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            
+            /* Andar ke content ko manage karne ke liye Flexbox */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around; /* Options ke darmiyan barabar fasla */
         }
 
-        .input-group {
-            margin-bottom: 15px;
-        }
-        
         .input-group input {
-            width: 75%;
-            padding: 12px;
-            border-radius: 8px;
+            width: 100%;
+            padding: clamp(12px, 2vh, 18px); /* Responsive padding */
+            border-radius: 10px;
             border: 1px solid #777;
             background-color: rgba(255, 255, 255, 0.9);
             color: #333;
-            font-size: 16px;
+            font-size: clamp(16px, 2.5vw, 22px); /* Responsive font size */
             box-sizing: border-box;
         }
 
@@ -70,18 +72,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 14px;
-            margin-bottom: 25px;
+            font-size: clamp(14px, 2vw, 18px); /* Responsive font size */
+            color: #f0f0f0;
         }
 
         .save-password {
             display: flex;
             align-items: center;
-            color: #f0f0f0;
         }
 
         .save-password input {
-            margin-right: 8px;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
         }
 
         .forgot-password {
@@ -91,16 +94,15 @@
 
         .buttons {
             display: flex;
-            flex-direction: column; /* Buttons ko upar neeche kar diya hai */
-            gap: 12px; /* Buttons ke darmiyan gap */
-            margin-bottom: 20px;
+            flex-direction: column;
+            gap: 15px;
         }
 
         .btn {
-            padding: 14px 0;
+            padding: clamp(15px, 2.5vh, 20px) 0; /* Responsive padding */
             border: none;
-            border-radius: 8px;
-            font-size: 18px;
+            border-radius: 12px;
+            font-size: clamp(18px, 3vw, 24px); /* Responsive font size */
             font-weight: bold;
             cursor: pointer;
             width: 100%;
@@ -133,12 +135,12 @@
             color: white;
             text-decoration: none;
             background-color: rgba(0, 0, 0, 0.4);
-            padding: 10px 25px;
+            padding: clamp(10px, 1.8vh, 15px) clamp(25px, 4vw, 40px);
             border-radius: 50px;
             display: inline-block;
             border: 1px solid #777;
             font-weight: bold;
-            font-size: 14px; /* Thora chhota font */
+            font-size: clamp(14px, 2.2vw, 20px);
         }
 
         .version {
@@ -149,7 +151,7 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* === YEH SAB SE ZAROORI HISSA HAI (FORCE LANDSCAPE) === */
+        /* === FORCE LANDSCAPE CODE === */
         @media (orientation: portrait) {
             .content-wrapper {
                 width: 100vh;
@@ -166,13 +168,12 @@
 <body>
     <div class="content-wrapper">
         <div class="page-container">
-
             <form class="login-form">
                 <div class="input-group">
-                    <input type="tel" id="mobile" value="3221287976" placeholder="Mobile Number">
+                    <input type="tel" id="mobile" placeholder="Mobile Number">
                 </div>
                 <div class="input-group">
-                    <input type="password" id="password" value="password" placeholder="Password">
+                    <input type="password" id="password" placeholder="Password">
                 </div>
                 <div class="options">
                     <div class="save-password">
@@ -189,7 +190,6 @@
                     <a href="#">Guest Login</a>
                 </div>
             </form>
-
         </div>
         <div class="version">Version 1.00</div>
     </div>
@@ -198,15 +198,10 @@
         function goFullScreen() {
             const elem = document.documentElement;
             if (!document.fullscreenElement) {
-                if (elem.requestFullscreen) {
-                    elem.requestFullscreen();
-                } else if (elem.mozRequestFullScreen) { /* Firefox */
-                    elem.mozRequestFullScreen();
-                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
-                    elem.webkitRequestFullscreen();
-                } else if (elem.msRequestFullscreen) { /* IE/Edge */
-                    elem.msRequestFullscreen();
-                }
+                if (elem.requestFullscreen) { elem.requestFullscreen(); } 
+                else if (elem.mozRequestFullScreen) { elem.mozRequestFullScreen(); } 
+                else if (elem.webkitRequestFullscreen) { elem.webkitRequestFullscreen(); } 
+                else if (elem.msRequestFullscreen) { elem.msRequestFullscreen(); }
             }
             document.removeEventListener('click', goFullScreen);
         }
