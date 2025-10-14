@@ -44,7 +44,10 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(7px);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-            margin-top: 15vh;
+            
+            /* === YAHAN TABDEELI KI GAYI HAI === */
+            /* Oopar wala gap 15vh se kam karke 10vh kar diya hai */
+            margin-top: 10vh; 
         }
 
         .input-group {
@@ -85,12 +88,10 @@
             text-decoration: none;
         }
 
-        /* === YAHAN TABDEELI KI GAYI HAI === */
         .buttons {
             display: flex;
-            /* flex-direction: column; <-- Yeh line hata di gayi hai */
-            flex-direction: row; /* Buttons ko side-by-side karne ke liye */
-            gap: 12px; /* Dono buttons ke darmiyan fasla */
+            flex-direction: row;
+            gap: 12px;
             margin-bottom: 20px;
         }
 
@@ -101,8 +102,7 @@
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            /* width: 100%; <-- Yeh line bhi hata di gayi hai */
-            flex: 1; /* Yeh dono buttons ko barabar jaga dega */
+            flex: 1;
             text-transform: uppercase;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             transition: transform 0.2s;
@@ -148,7 +148,6 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* === FORCE LANDSCAPE CODE === */
         @media (orientation: portrait) {
             .content-wrapper {
                 width: 100vh;
