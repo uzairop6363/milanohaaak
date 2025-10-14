@@ -28,14 +28,12 @@
         .page-container {
             display: flex;
             justify-content: flex-end;
-            align-items: flex-start; /* Form ko top align rakha hai */
+            align-items: flex-start;
             height: 100%;
             width: 100%;
             padding-right: 8%;
             box-sizing: border-box;
-            
-            /* === NEECHE KA GAP WAPAS LAANE KE LIYE === */
-            padding-bottom: 8vh; /* Neeche se 8vh ka gap */
+            padding-bottom: 8vh; /* Neeche wala gap yahan se control ho raha hai */
         }
 
         .login-form {
@@ -47,25 +45,11 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(7px);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-            
-            /* Oopar wala gap jo pehle theek kiya tha */
             margin-top: 10vh; 
-            
-            /* === NEECHE KA GAP MAINTAIN KARNE KE LIYE === */
-            /* Jab height content ke mutabiq adjust ho to margin-bottom kaam karta hai */
-            margin-bottom: 0; /* Page-container ki padding-bottom ab theek kaam karegi */
-
-            /* Form ki height ko control karne ke liye */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* Content ko equally distribute karega */
-            height: calc(100% - 18vh); /* Total height - top gap - bottom gap */
-            max-height: 500px; /* Ya koi munasib max height */
         }
 
-
         .input-group {
-            margin-bottom: 15px; /* Input groups ke darmiyan thora kam fasla */
+            margin-bottom: 15px;
         }
 
         .input-group label {
@@ -76,17 +60,15 @@
             font-size: 14px;
         }
 
-        /* === INPUT BOXES KO PATLA, GOL AUR TRANSPARENT KARNE KE LIYE === */
+        /* === YAHAN INPUT BOXES KO MAZEED CHHOTA KIYA GAYA HAI === */
         .mobile-input-container, .password-container {
             display: flex;
             align-items: center;
-            /* Background color ko transparent kiya gaya */
-            background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
-            /* Borders ko mazeed gol kiya gaya */
-            border-radius: 25px; /* Pehle 8px tha, ab 25px */
-            border: 1px solid rgba(255, 255, 255, 0.4); /* Transparent border */
-            
-            padding: 5px 10px; /* Input boxes ko patla karne ke liye padding kam ki */
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            /* Padding kam kar di hai taake box aur patla ho jaye */
+            padding: 2px 10px; 
             position: relative;
         }
 
@@ -94,7 +76,7 @@
             display: flex;
             align-items: center;
             padding-right: 10px;
-            color: #eee; /* Colour thora light kiya hai */
+            color: #eee;
             font-weight: bold;
         }
 
@@ -103,29 +85,33 @@
             height: 0; 
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
-            border-top: 5px solid #ccc; /* Arrow ka color thora light kiya hai */
+            border-top: 5px solid #ccc;
             margin-left: 5px;
         }
 
         .divider {
+            /* Divider ki height bhi kam kar di hai */
             width: 1px;
-            height: 20px; /* Divider ki height kam ki hai, input box ke patle hone ki wajah se */
+            height: 18px; 
             background-color: #f06292;
-            opacity: 0.7; /* Divider ko thora transparent kiya */
+            opacity: 0.7;
         }
         
+        /* === YAHAN TEXT AUR PADDING KO CHHOTA KIYA GAYA HAI === */
         .input-group input {
             width: 100%;
-            padding: 8px 10px; /* Input text ke andar ki padding mazeed kam ki */
+            /* Andar ki padding kam ki hai */
+            padding: 7px 10px; 
             border: none;
             background: transparent;
-            color: #fff; /* Input text ka color white kiya hai transparent background ki wajah se */
-            font-size: 16px;
+            color: #fff;
+            /* Font size 16px se 14px kar diya hai */
+            font-size: 14px; 
             outline: none;
         }
         
         .input-group input::placeholder {
-            color: #ccc; /* Placeholder ka color thora light kiya hai */
+            color: #ccc;
         }
 
         .eye-icon {
@@ -143,7 +129,7 @@
             justify-content: space-between;
             align-items: center;
             font-size: 14px;
-            margin-bottom: 20px; /* Thora kam fasla taake neeche gap ban sake */
+            margin-bottom: 20px;
             color: #f0f0f0;
         }
 
@@ -151,7 +137,7 @@
         .save-password input { margin-right: 8px; }
         .forgot-password { color: #00c6ff; text-decoration: none; }
 
-        .buttons { display: flex; flex-direction: row; gap: 12px; margin-bottom: 0; /* Buttons ke neeche ka margin hata diya hai */ }
+        .buttons { display: flex; flex-direction: row; gap: 12px; margin-bottom: 0; }
         .btn {
             padding: 12px 0;
             border: none;
@@ -164,17 +150,12 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             transition: transform 0.2s;
         }
-        
-        .btn:active {
-            transform: translateY(2px);
-        }
-
+        .btn:active { transform: translateY(2px); }
         .btn-login {
             background: linear-gradient(180deg, #ffde59, #ffac38);
             color: #fff;
             border: 1px solid #ffc400;
         }
-
         .btn-register {
             background: linear-gradient(180deg, #52d1ff, #20a9ff);
             color: #fff;
