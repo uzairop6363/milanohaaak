@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Game Login</title>
+    
+    <style>
+        /* CSS Code Yahan Hai */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Scrollbars ko hamesha ke liye hide kar dein */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000; /* Agar image load na ho to black background */
+        }
+        
+        /* Yeh wrapper poore content ko sambhalega */
+        .content-wrapper {
+            width: 100%;
+            height: 100%;
+            background: url('background.png') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            color: white;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .login-form {
+            background-color: rgba(20, 20, 40, 0.65);
+            padding: clamp(15px, 3vw, 25px) clamp(20px, 4vw, 40px); /* Responsive padding */
+            border-radius: 15px;
+            width: 100%;
+            max-width: 420px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #777;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: clamp(12px, 1.5vw, 14px); /* Responsive font size */
+            margin-bottom: 25px;
+        }
+
+        .save-password {
+            display: flex;
+            align-items: center;
+            color: #f0f0f0;
+        }
+
+        .save-password input {
+            margin-right: 8px;
+        }
+
+        .forgot-password {
+            color: #00c6ff;
+            text-decoration: none;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            padding: 15px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        
+        .btn:active {
+            transform: translateY(2px);
+        }
+
+        .btn-login {
+            background: linear-gradient(180deg, #ffde59, #ffac38);
+            color: #fff;
+            border: 1px solid #ffc400;
+        }
+
+        .btn-register {
+            background: linear-gradient(180deg, #52d1ff, #20a9ff);
+            color: #fff;
+            border: 1px solid #009fff;
+        }
+        
+        .guest-login {
+            text-align: center;
+        }
+
+        .guest-login a {
+            color: white;
+            text-decoration: none;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid #777;
+            font-weight: bold;
+        }
+
+        .version {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* === YEH SAB SE ZAROORI HISSA HAI === */
+        /* Jab screen seedhi (portrait) ho, to yeh CSS apply hoga */
+        @media (orientation: portrait) {
+            .content-wrapper {
+                /* Screen ki height ko width bana do */
+                width: 100vh;
+                /* Screen ki width ko height bana do */
+                height: 100vw;
+                
+                position: absolute;
+                top: 0;
+                left: 0;
+                
+                /* Isko 90 degree ghuma do aur aisi position do ke screen par fit ho jaye */
+                transform-origin: top left;
+                transform: rotate(90deg) translateY(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <div class="login-container">
+            <form class="login-form">
+                <div class="input-group">
+                    <input type="tel" id="mobile" value="3221287976" placeholder="Mobile Number">
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" value="password" placeholder="Password">
+                </div>
+                <div class="options">
+                    <div class="save-password">
+                        <input type="checkbox" id="save-password" checked>
+                        <label for="save-password">Save Password</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <div class="buttons">
+                    <button type="button" class="btn btn-login">Login</button>
+                    <button type="button" class="btn btn-register">Register</button>
+                </div>
+                <div class="guest-login">
+                    <a href="#">Guest Login</a>
+                </div>
+            </form>
+            <div class="version">Version 1.00</div>
+        </div>
+    </div>
+
+    <script>
+        function goFullScreen() {
+            const elem = document.documentElement;
+            if (!document.fullscreenElement) { // Check karein ke pehle se full screen to nahi
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                    elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                    elem.msRequestFullscreen();
+                }
+            }
+            // Pehli baar click ke baad is event listener ko hata dein
+            document.removeEventListener('click', goFullScreen);
+        }
+
+        // Jab user page par kahin bhi click karega, to full-screen ho jayega
+        document.addEventListener('click', goFullScreen);
+    </script>
+
+</body>
+</html>
