@@ -25,39 +25,36 @@
             position: relative;
         }
 
-        /* === YEH CONTAINER IMAGE AUR FORM DONO KO HOLD KAREGA === */
+        /* === YAHAN TABDEELI KI GAYI HAI === */
         .page-container {
             display: flex;
-            justify-content: space-between; /* Image aur Form ko alag alag kinaroon par bhej dega */
-            align-items: center;      /* Dono cheezon ko vertically center rakhega */
+            justify-content: flex-end;  /* Form ko Right Side par bheje ga */
+            align-items: flex-start;    /* Form ko Top par align karega */
             height: 100%;
             width: 100%;
+            padding-right: 8%;
             box-sizing: border-box;
-            
-            /* Dono sides se thora fasla */
-            padding: 0 5%; 
         }
 
-        /* === CASINO GIRL IMAGE KI STYLING === */
-        .casino-girl-image {
-            max-height: 85vh; /* Image ki height screen ki height ka 85% se zyada na ho */
-            width: auto;      /* Aspect ratio kharab na ho */
-            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5)); /* Halki si shadow */
-        }
-
-        /* === LOGIN FORM KI STYLING === */
+        /* === YAHAN BHI TABDEELI KI GAYI HAI === */
         .login-form {
             background-color: rgba(30, 30, 50, 0.7);
             padding: 25px 30px;
             border-radius: 15px;
-            width: 90%; /* Responsive width */
-            max-width: 340px; /* Form ka size chhota aur compact rahega */
+            width: 90%;
+            max-width: 340px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(7px);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            
+            /* Yeh line oopar se zaroori gap paida karegi */
+            margin-top: 15vh; /* 15% of the screen height */
         }
 
-        .input-group { margin-bottom: 15px; }
+        .input-group {
+            margin-bottom: 15px;
+        }
+
         .input-group input {
             width: 100%;
             padding: 12px;
@@ -68,6 +65,7 @@
             font-size: 16px;
             box-sizing: border-box;
         }
+
         .options {
             display: flex;
             justify-content: space-between;
@@ -76,10 +74,28 @@
             margin-bottom: 25px;
             color: #f0f0f0;
         }
-        .save-password { display: flex; align-items: center; }
-        .save-password input { margin-right: 8px; }
-        .forgot-password { color: #00c6ff; text-decoration: none; }
-        .buttons { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+
+        .save-password {
+            display: flex;
+            align-items: center;
+        }
+
+        .save-password input {
+            margin-right: 8px;
+        }
+
+        .forgot-password {
+            color: #00c6ff;
+            text-decoration: none;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
         .btn {
             padding: 14px 0;
             border: none;
@@ -92,18 +108,27 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             transition: transform 0.2s;
         }
-        .btn:active { transform: translateY(2px); }
+        
+        .btn:active {
+            transform: translateY(2px);
+        }
+
         .btn-login {
             background: linear-gradient(180deg, #ffde59, #ffac38);
             color: #fff;
             border: 1px solid #ffc400;
         }
+
         .btn-register {
             background: linear-gradient(180deg, #52d1ff, #20a9ff);
             color: #fff;
             border: 1px solid #009fff;
         }
-        .guest-login { text-align: center; }
+        
+        .guest-login {
+            text-align: center;
+        }
+
         .guest-login a {
             color: white;
             text-decoration: none;
@@ -115,6 +140,7 @@
             font-weight: bold;
             font-size: 14px;
         }
+
         .version {
             position: absolute;
             bottom: 10px;
@@ -140,9 +166,6 @@
 <body>
     <div class="content-wrapper">
         <div class="page-container">
-            
-            <img src="girl.png" alt="Casino Girl" class="casino-girl-image">
-            
             <form class="login-form">
                 <div class="input-group">
                     <input type="tel" id="mobile" placeholder="Mobile Number">
@@ -165,7 +188,6 @@
                     <a href="#">Guest Login</a>
                 </div>
             </form>
-
         </div>
         <div class="version">Version 1.00</div>
     </div>
