@@ -71,11 +71,19 @@
         #custom-toast { visibility: hidden; min-width: 250px; background-color: rgba(0, 0, 0, 0.8); color: #fff; text-align: center; border-radius: 25px; padding: 16px; position: fixed; z-index: 100; left: 50%; transform: translateX(-50%); top: 30px; font-size: 17px; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 0 10px rgba(0,0,0,0.5); transition: visibility 0s, opacity 0.5s linear; opacity: 0; }
         #custom-toast.show { visibility: visible; opacity: 1; }
 
-        /* YEH WALA HISSA HATA DIYA GAYA HAI JO GAME KHARAB KAR RAHA THA
+        /* ===== YEH CODE WAPIS ADD KIYA GAYA HAI ===== */
+        /* Is se game phone seedha pakarne par bhi landscape nazar aayegi */
         @media (orientation: portrait) { 
-            .content-wrapper { ... } 
+            .content-wrapper { 
+                width: 100vh; 
+                height: 100vw; 
+                position: absolute; 
+                top: 0; 
+                left: 0; 
+                transform-origin: top left; 
+                transform: rotate(90deg) translateY(-100%); 
+            } 
         }
-        */
     </style>
 </head>
 <body>
@@ -168,9 +176,8 @@
         registerForm.addEventListener('submit',async(event)=>{event.preventDefault();const mobileInput=document.getElementById('register-mobile').value;const phoneNumber="092"+mobileInput;const otp=document.getElementById('captcha').value;const password=document.getElementById('register-password').value;const confirmPassword=document.getElementById('confirm-password').value;const terms=document.getElementById('terms').checked;if(password.length<6){showToast("Password must be at least 6 characters long.");return}
         if(password!==confirmPassword){showToast("Passwords do not match.");return}
         if(!terms){showToast("You must accept the Terms of Service.");return}
-        try{const response=await fetch(`${API_URL}/submit-registration`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phoneNumber,otp,password})});const data=await response.json();if(response.ok){showToast("Registered Success");registerForm.classList.add('hidden');loginForm.classList.remove('hidden');registerForm.reset()}else{showToast(`Error: ${data.message}`)}}catch(error){showToast("Error: Could not connect to the server.")}});
+        try{const response=await fetch(`${API.URL}/submit-registration`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phoneNumber,otp,password})});const data=await response.json();if(response.ok){showToast("Registered Success");registerForm.classList.add('hidden');loginForm.classList.remove('hidden');registerForm.reset()}else{showToast(`Error: ${data.message}`)}}catch(error){showToast("Error: Could not connect to the server.")}});
         loginForm.addEventListener('submit',(event)=>{event.preventDefault();showToast("Login functionality requires server connection.")});
     </script>
 </body>
-</html>
 </html>
