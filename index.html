@@ -6,7 +6,7 @@
     <title>Game Portal</title>
     
     <style>
-        /* CSS mein koi tabdeeli nahi hai, yeh bilkul theek hai */
+        /* CSS styles bilkul pehle jaisay hain */
         body, html {
             margin: 0;
             padding: 0;
@@ -197,8 +197,8 @@
     </div>
 
     <script>
-        // SERVER KA URL (jab developer isay live karega to yeh URL badal jayega)
-        const API_URL = 'http://localhost:3000';
+        // AAPKE LIVE REPLIT SERVER KA URL
+        const API_URL = 'https://6ff2476e-cfd1-40af-b64a-ac9ffe70fd74-00-2zckfh4t0utmg.sisko.replit.dev';
 
         // Zaroori elements ko select karna
         const loginForm = document.getElementById('login-form');
@@ -226,12 +226,12 @@
         // 1. Jab user 'Send' button dabaye (OTP Request)
         sendOtpBtn.addEventListener('click', async () => {
             const mobileInput = document.getElementById('register-mobile').value;
-            if (mobileInput.length < 10) { // e.g., 3001234567
+            if (mobileInput.length < 10) {
                 alert("Please enter a valid mobile number (e.g., 3001234567).");
                 return;
             }
             const mobileNumber = "092" + mobileInput;
-            sendOtpBtn.disabled = true; // Button ko disable kar dein
+            sendOtpBtn.disabled = true;
             sendOtpBtn.innerText = "Wait...";
 
             try {
@@ -241,11 +241,11 @@
                     body: JSON.stringify({ phoneNumber: mobileNumber })
                 });
                 const data = await response.json();
-                alert(data.message); // Server se jo message aye, woh dikhaye
+                alert(data.message);
             } catch (error) {
                 alert("Error: Could not connect to the server.");
             } finally {
-                sendOtpBtn.disabled = false; // Button ko wapis enable karein
+                sendOtpBtn.disabled = false;
                 sendOtpBtn.innerText = "Send";
             }
         });
@@ -260,7 +260,6 @@
             const confirmPassword = document.getElementById('confirm-password').value;
             const terms = document.getElementById('terms').checked;
 
-            // Basic validation
             if(password.length < 6) { alert("Password must be at least 6 characters long."); return; }
             if(password !== confirmPassword) { alert("Passwords do not match."); return; }
             if(!terms) { alert("You must accept the Terms of Service."); return; }
@@ -275,10 +274,9 @@
                 
                 if (response.ok) {
                     alert('Request submitted! Please wait for admin approval.');
-                    // User ko login page par wapis bhej dein
                     registerForm.classList.add('hidden');
                     loginForm.classList.remove('hidden');
-                    registerForm.reset(); // Form ko khali kar dein
+                    registerForm.reset();
                 } else {
                     alert(`Error: ${data.message}`);
                 }
