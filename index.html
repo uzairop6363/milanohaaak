@@ -3,13 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>M777</title>
+    <title>Game Portal</title>
     
     <style>
-        /* CSS styles bilkul pehle jaisay hain */
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #000; }
-        .content-wrapper { width: 100%; height: 100%; background: url('background.png') no-repeat center center; background-size: cover; position: relative; }
-        .page-container { display: flex; justify-content: flex-end; align-items: flex-start; height: 100%; width: 100%; padding-right: 6%; box-sizing: border-box; padding-bottom: 4vh; }
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+        }
+        
+        .content-wrapper {
+            width: 100%;
+            height: 100%;
+            background: url('background.png') no-repeat center center; /* APNI GAME KA BACKGROUND YAHAN LAGAYEIN */
+            background-size: cover;
+            position: relative;
+        }
+
+        .page-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            height: 100%;
+            width: 100%;
+            padding-right: 6%; 
+            box-sizing: border-box;
+            padding-bottom: 4vh; 
+        }
+
+        /* Baaqi saara CSS bilkul waisa hi hai */
         .login-form, .register-form { background-color: rgba(30, 30, 50, 0.6); padding: 15px 20px; border-radius: 15px; width: 85%; border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(7px); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4); }
         .login-form { max-width: 300px; margin-top: 13vh; }
         .register-form { max-width: 380px; margin-top: 5vh; }
@@ -41,134 +67,110 @@
         .terms-container { display: flex; align-items: center; font-size: 10px; margin-bottom: 15px; color: #f0f0f0; }
         .terms-container input { margin-right: 4px; width: 12px; height: 12px; }
         .version { position: absolute; bottom: 10px; left: 10px; font-size: 12px; color: rgba(255, 255, 255, 0.7); }
-        @media (orientation: portrait) { .content-wrapper { width: 100vh; height: 100vw; position: absolute; top: 0; left: 0; transform-origin: top left; transform: rotate(90deg) translateY(-100%); } }
 
-        /* ===== NAYA PROFESSIONAL NOTIFICATION KA STYLE ===== */
-        #custom-toast {
-            visibility: hidden; /* Shuru mein chupa hua hoga */
-            min-width: 250px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            text-align: center;
-            border-radius: 25px;
-            padding: 16px;
-            position: fixed;
-            z-index: 100;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 30px;
-            font-size: 17px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            transition: visibility 0s, opacity 0.5s linear;
-            opacity: 0;
-        }
+        #custom-toast { visibility: hidden; min-width: 250px; background-color: rgba(0, 0, 0, 0.8); color: #fff; text-align: center; border-radius: 25px; padding: 16px; position: fixed; z-index: 100; left: 50%; transform: translateX(-50%); top: 30px; font-size: 17px; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 0 10px rgba(0,0,0,0.5); transition: visibility 0s, opacity 0.5s linear; opacity: 0; }
+        #custom-toast.show { visibility: visible; opacity: 1; }
 
-        #custom-toast.show {
-            visibility: visible;
-            opacity: 1;
+        /* YEH WALA HISSA HATA DIYA GAYA HAI JO GAME KHARAB KAR RAHA THA
+        @media (orientation: portrait) { 
+            .content-wrapper { ... } 
         }
+        */
     </style>
 </head>
 <body>
     <audio id="background-music" src="music.mp3" loop></audio>
-
     <div id="custom-toast"></div>
-
     <div class="content-wrapper">
         <div class="page-container">
             <form class="login-form" id="login-form">
-                </form>
+                <div class="input-group">
+                    <label for="login-mobile">Mobile</label>
+                    <div class="mobile-input-container">
+                        <div class="country-code"><span>092</span><span class="arrow-down"></span></div>
+                        <input type="tel" id="login-mobile" placeholder="Please enter your mobile number">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="login-password" placeholder="Please enter a password">
+                        <span class="eye-icon" onclick="togglePassword('login-password')"></span>
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="save-password"><input type="checkbox" id="save-password" checked><label for="save-password">Save Password</label></div>
+                    <a href="#" class="forgot-password">Forgot Password</a>
+                </div>
+                <div class="buttons">
+                    <button type="submit" class="btn btn-login">Login</button>
+                    <button type="button" class="btn btn-register-nav" id="show-register-btn">Register</button>
+                </div>
+            </form>
 
             <form class="register-form hidden" id="register-form">
-                 </form>
+                <h1 class="form-title">Register</h1>
+                <div class="input-group">
+                    <label for="register-mobile">Mobile</label>
+                    <div class="input-container">
+                        <div class="country-code"><span>092</span><span class="arrow-down"></span></div>
+                        <input type="tel" id="register-mobile" placeholder="3XX-XXXXXXX" required>
+                    </div>
+                </div>
+                <div class="input-group captcha-container">
+                    <label for="captcha">Captcha</label>
+                    <div class="input-container">
+                        <input type="text" id="captcha" placeholder="Captcha" required>
+                        <button type="button" class="btn-send" id="send-otp-btn">Send</button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="register-password">Password</label>
+                    <div class="input-container">
+                        <input type="password" id="register-password" placeholder="Password" required>
+                        <span class="eye-icon" onclick="togglePassword('register-password')"></span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="confirm-password">Confirm</label>
+                    <div class="input-container">
+                        <input type="password" id="confirm-password" placeholder="Confirm password" required>
+                        <span class="eye-icon" onclick="togglePassword('confirm-password')"></span>
+                    </div>
+                </div>
+                <div class="terms-container">
+                    <input type="checkbox" id="terms" required checked><label for="terms">Accept Terms Of Service and Privacy & Policy</label>
+                </div>
+                <div class="buttons">
+                    <button type="button" class="btn btn-back" id="show-login-btn">Back</button>
+                    <button type="submit" class="btn btn-register">Register</button>
+                </div>
+            </form>
         </div>
         <div class="version">Version 1.00</div>
     </div>
 
     <script>
-        // AAPKE LIVE REPLIT SERVER KA URL
+        // JavaScript mein koi tabdeeli nahi hai
         const API_URL = 'https://6ff2476e-cfd1-40af-b64a-ac9ffe70fd74-00-2zckfh4t0utmg.sisko.replit.dev';
-
-        // Baaqi zaroori elements
         const loginForm = document.getElementById('login-form');
         const registerForm = document.getElementById('register-form');
-        // ... baaqi elements waisay hi hain
-
-        // ===== NAYA NOTIFICATION KA JAVASCRIPT FUNCTION =====
-        function showToast(message) {
-            const toast = document.getElementById("custom-toast");
-            toast.innerText = message; // Message set karna
-            toast.className = "show"; // Dikhane ke liye class add karna
-
-            // 3 second ke baad message ko wapis chupana
-            setTimeout(function(){ 
-                toast.className = toast.className.replace("show", ""); 
-            }, 3000);
-        }
-
-        // Music aur Full Screen wala function (Pehle jaisa)
-        // ...
-
-        // Password ko show/hide karne wala function (Pehle jaisa)
-        // ...
-
-        // Register form kholnay aur band karne wala code (Pehle jaisa)
-        // ...
-
-        // 1. Jab user 'Send' button dabaye (OTP Request)
-        sendOtpBtn.addEventListener('click', async () => {
-            // ... logic pehle jaisa hai ...
-
-            try {
-                const response = await fetch(`${API_URL}/request-otp`, {
-                    // ... request options pehle jaisay hain ...
-                });
-                const data = await response.json();
-                
-                if (response.ok) {
-                    showToast("Success"); // Naya notification
-                } else {
-                    showToast(data.message); // Error ke liye naya notification
-                }
-            } catch (error) {
-                showToast("Error: Could not connect to server."); // Naya notification
-            } finally {
-                // ... logic pehle jaisa hai ...
-            }
-        });
-
-        // 2. Jab user 'Register' button dabaye (Mukammal Registration)
-        registerForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
-            // ... validation pehle jaisi hai ...
-            if(password.length < 6) { showToast("Password must be at least 6 characters long."); return; }
-            if(password !== confirmPassword) { showToast("Passwords do not match."); return; }
-            if(!terms) { showToast("You must accept the Terms of Service."); return; }
-
-            try {
-                const response = await fetch(`${API_URL}/submit-registration`, {
-                    // ... request options pehle jaisay hain ...
-                });
-                const data = await response.json();
-                
-                if (response.ok) {
-                    showToast("Registered Success"); // Naya notification
-                    // ... baaqi logic pehle jaisa hai ...
-                } else {
-                    showToast(`Error: ${data.message}`); // Naya notification
-                }
-            } catch (error) {
-                showToast("Error: Could not connect to the server."); // Naya notification
-            }
-        });
-
-        // Login form submit hone par
-        loginForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            showToast("Login functionality requires server connection."); // Naya notification
-        });
-
+        const showRegisterBtn = document.getElementById('show-register-btn');
+        const showLoginBtn = document.getElementById('show-login-btn');
+        const sendOtpBtn = document.getElementById('send-otp-btn');
+        function showToast(message){const toast=document.getElementById("custom-toast");toast.innerText=message;toast.className="show";setTimeout(function(){toast.className=toast.className.replace("show","")},3000)}
+        function handleFirstInteraction(){const elem=document.documentElement;if(!document.fullscreenElement){if(elem.requestFullscreen){elem.requestFullscreen()}else if(elem.webkitRequestFullscreen){elem.webkitRequestFullscreen()}}var music=document.getElementById('background-music');if(music.paused){music.play().catch(error=>{console.log("Audio play error:",error)})}document.removeEventListener('click',handleFirstInteraction)}document.addEventListener('click',handleFirstInteraction);
+        function togglePassword(fieldId){const passwordField=document.getElementById(fieldId);if(passwordField.type==="password"){passwordField.type="text"}else{passwordField.type="password"}}
+        showRegisterBtn.addEventListener('click',()=>{loginForm.classList.add('hidden');registerForm.classList.remove('hidden')});
+        showLoginBtn.addEventListener('click',()=>{registerForm.classList.add('hidden');loginForm.classList.remove('hidden')});
+        sendOtpBtn.addEventListener('click',async()=>{const mobileInput=document.getElementById('register-mobile').value;if(mobileInput.length<10){showToast("Please enter a valid mobile number (e.g., 3001234567).");return}
+        const mobileNumber="092"+mobileInput;sendOtpBtn.disabled=true;sendOtpBtn.innerText="Wait...";try{const response=await fetch(`${API_URL}/request-otp`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phoneNumber:mobileNumber})});const data=await response.json();if(response.ok){showToast("Success")}else{showToast(data.message)}}catch(error){showToast("Error: Could not connect to server.")}finally{sendOtpBtn.disabled=false;sendOtpBtn.innerText="Send"}});
+        registerForm.addEventListener('submit',async(event)=>{event.preventDefault();const mobileInput=document.getElementById('register-mobile').value;const phoneNumber="092"+mobileInput;const otp=document.getElementById('captcha').value;const password=document.getElementById('register-password').value;const confirmPassword=document.getElementById('confirm-password').value;const terms=document.getElementById('terms').checked;if(password.length<6){showToast("Password must be at least 6 characters long.");return}
+        if(password!==confirmPassword){showToast("Passwords do not match.");return}
+        if(!terms){showToast("You must accept the Terms of Service.");return}
+        try{const response=await fetch(`${API_URL}/submit-registration`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phoneNumber,otp,password})});const data=await response.json();if(response.ok){showToast("Registered Success");registerForm.classList.add('hidden');loginForm.classList.remove('hidden');registerForm.reset()}else{showToast(`Error: ${data.message}`)}}catch(error){showToast("Error: Could not connect to the server.")}});
+        loginForm.addEventListener('submit',(event)=>{event.preventDefault();showToast("Login functionality requires server connection.")});
     </script>
 </body>
+</html>
 </html>
